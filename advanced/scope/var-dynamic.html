@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dynamic global variable</title>
+</head>
+<body>
+    Note !!
+    if you are asign a value to the variable without declairation then this variable will make in global scope...
+    
+    how to overcome this ...
+    Add `scrict mode` in first line
+
+    <script>
+        function dynamicVar(){
+            topic = "react";        //it's global var now
+            console.log(topic); // o/p => react
+        }
+
+        dynamicVar();
+        console.log(topic); // o/p => react
+    </script>
+</body>
+</html>
