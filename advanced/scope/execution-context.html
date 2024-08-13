@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Execution Context</title>
+</head>
+
+<body>
+    Note !!
+
+    => Execution Context = when any programe execute then we have 3 part of programe..
+
+        1 => Variable : programe variable
+        2 => function : programe function (child function)
+
+        3 => Lexical Scope (environment) : The scope of function (programe), we can say the access of programe
+
+    <script>
+
+        var globalVar = 'Global'; // ग्लोबल स्कोप
+
+            function outerFunction() {
+                var outerVar = 'Outer'; // outerFunction स्कोप
+
+                function innerFunction() {
+                    var innerVar = 'Inner'; // innerFunction स्कोप
+                    console.log(innerVar); // Output: Inner
+                    console.log(outerVar); // Output: Outer
+                    console.log(globalVar); // Output: Global
+                }
+                innerFunction();
+            }
+
+            outerFunction();
+    </script>
+</body>
+
+</html>

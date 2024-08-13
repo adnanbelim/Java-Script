@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nested scope</title>
+</head>
+
+<body>
+    Note !!
+
+    => In nested scope they check nearest variable... if variable not found then they check outside the scope.
+    => internal variable can hidden the outside variable.
+
+    <script>
+
+        var color = 'blue'; //global
+
+        function outer() {      //scope
+            var color = 'red';
+            console.log(color);
+
+            function nested() {      //nested scope
+                var color = 'yellow';
+                console.log(color);     
+            }
+
+            nested();       // o/p => yellow
+        }
+
+        outer();     // o/p => red
+        console.log(color);     // o/p => blue
+
+
+    </script>
+</body>
+
+</html>
