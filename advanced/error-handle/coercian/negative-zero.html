@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Negative Zero!!!
+</body>
+<script>
+
+    var checkNegzero = -0;
+
+    const bool = checkNegzero === -0;
+    console.log(bool);
+
+    const str = checkNegzero.toString();
+    console.log(str);
+
+    const bool1 = checkNegzero === 0;
+    console.log(bool1);
+
+    const greater = checkNegzero > 0 || checkNegzero < 0;
+    console.log(greater);
+
+    const obj = Object.is(checkNegzero, -0);
+    console.log(obj);
+
+    const obj1 = Object.is(checkNegzero, 0);
+    console.log(obj1);
+
+
+    function negzero(zero){
+        var direction = 
+             (zero < 0 || Object.is(zero, -0)) ? 1 : -1;
+        return `${direction} ${Math.abs(zero)}`;
+
+    }
+    
+    console.log(negzero(0));
+    console.log(negzero(-0)); ;
+    console.log(negzero(1)); ;
+    console.log(negzero(-3))
+</script>
+</html>

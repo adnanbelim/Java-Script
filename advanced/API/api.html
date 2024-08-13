@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p class="fact"></p>
+    <button class="getfact">get fact</button>
+    <script>
+        // AJAX => Asyncronous Java Script XML
+        // purane jamane me XML data aata tha API se...
+        // JSON || AJAJ => JS Object Notation || Asyncronous Jt JSON
+        // Ab API data JSON format me aata hai jise json() method ka use karke human readable banaya jaata hai
+
+        // ==============================================================================>
+        const fact = document.querySelector('.fact');
+        const getfact = document.querySelector('.getfact');
+
+        const promise = async () => {
+            var api_data = await fetch('https://cat-fact.herokuapp.com/facts');
+            var json_data = await api_data.json();
+            console.log(json_data);
+            // status code
+            console.log(json_data.status); //console => undifined
+            // data retrieve from API
+            console.log(json_data[0].text);
+            // render data of API in HTML
+            fact.innerHTML = json_data[0].text;
+        }
+
+        // promise();
+        getfact.addEventListener('click', promise);
+        //==============================================================================>
+
+        // #API Attributs
+
+        //1... HTTP verbs => Methods of API like GET, POST, PUT, PATCH, UPDATE, DELETE...
+        //2... Status Code...
+ 
+
+    </script>
+</body>
+
+</html>

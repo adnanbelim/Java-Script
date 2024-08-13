@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON, Local Storage, Date and DOM</title>
+</head>
+
+<body>
+    <script>
+        let product1 = {
+            name: 't-shirt',
+            delivery_time: '29/10/2020',
+            message: 'Thank You',
+            status: 'complete',
+            price: 200,
+            rating: {
+                star: 4.5,
+                views: 453
+            },
+            quntaty() {
+                console.log('2');
+            }
+        }
+
+        console.log(product1);
+
+        // JSON======================================================>
+
+        let str = JSON.stringify(product1); //make string
+        console.log(typeof str);
+        console.log(str);
+
+        let json = JSON.parse(str); //make json object
+        console.log(json);
+
+        // Local Storage======================================================>
+
+        //to store data in local use setItem
+        //to retrieve data in local use getItem
+        //to remove one data in local use removeItem
+        //to clear all data in local use clear
+        //local me data storage karne ke liye json ko string me convert karn padta hai, ese object ko store karne par wo garbage value le leta hai 
+        //setItem takes 2 values first is "KEY" and second is "String" 
+
+        localStorage.setItem('product', JSON.stringify(product1));
+        console.log(localStorage.getItem('product'));
+        localStorage.removeItem('product');
+        localStorage.clear();
+
+    </script>
+</body>
+
+</html>

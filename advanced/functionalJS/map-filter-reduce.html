@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    high order Function
+</body>
+<script>
+
+    //Map Function... : create a new array
+    let arr = [1, 2, 3];
+
+    let a = arr.map((value, index, array) => {
+        console.log(value, index, array)
+        return value + 5;
+    })
+    console.log(a);
+
+    //Filter Function : Print array value which passes the condition
+    let arr2 = [1, 2, 3, 22, 44, 66];
+
+    let a2 = arr2.filter((value) => {
+        return value < 10;
+    })
+    console.log(a2);
+
+    //reduce Function : reduce array in single value
+
+    let arr3 = [1, 2, 3, 22, 44, 66];
+
+    let a3 = arr3.reduce((value1, value2) => {
+        return value1 + value2;
+    })
+    console.log(a3);
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Mutability of data...
+</body>
+<script>
+    const oldcities = ["dilli", "bombay", "rajasthan"];
+    const newcities = oldcities.map((city) => {
+        if(city == "dilli") return "delhi";
+        if(city == "bombay") return "mumbai";
+        return city; 
+    });
+    console.log(newcities);
+
+    // Push Method
+
+    const subject = ["english","math","hindi"];
+    subject.push("sanskrit");
+    const count = subject.length;
+    console.log(subject);
+    console.log(count);
+
+    // Pop Method
+
+    subject.pop("sas=nskrit");
+    console.log(subject);
+
+    // sorting Method
+
+    function printSortedArray(array) {
+        array.sort();
+        for (const item of array) {
+            console.log(item);
+        }
+    }
+    printSortedArray(subject);
+</script>
+</html>

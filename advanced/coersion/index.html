@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Type Of = Coersion</title>
+</head>
+
+<body>
+    <script>
+        // toString
+
+        let a = null;
+        let c = undefined;
+        let d = 3.14;
+        let e = 0;
+        let f = -0;
+        let g = true;
+
+        let b = typeof(toString(a +  c  +  d  +  e  +  f  +  g ));
+        console.log(b);
+
+        // toNumber
+
+        // true => 1
+        // false => 0
+        // null => 0;
+        // undefined => NaN and [undefined] => 0
+
+        // "0" => 0
+        // "3.14" => 3.14
+        // ".4" => .4
+        // "009" => 9 
+        // "." => NaN
+
+        let z = Number(a);
+        console.log(z);
+
+        // Number => to check number or not
+        // NaN => to check not a number or not
+
+        // if you check number as array Number[undefined] its give 0
+        
+
+    </script>
+</body>
+
+</html>

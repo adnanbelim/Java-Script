@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let a = '5';
+        console.log(typeof (a + 3));
+        console.log(typeof (a - 3));
+
+        console.log(a + 3 * 3);
+
+        let b = 5;
+        console.log(b++); //POST increment => o/p 5
+        console.log(++b); //PRE increment => o/p 6
+        console.log(b);
+
+        console.log(typeof (NAN)); //undefined
+        // console.log(NAN === NAN); //false
+
+        console.log(1 < 2 < 3); // o/p = true
+        //console.log((true) < 3); true = 1
+
+        console.log(3 > 2 > 1); // o/p = false
+        //console.log((true) > 1); true = 1
+
+        // Method Chaining
+        let arr = [1,2,3,4,5];
+        let result = arr.filter( (e) => e < 4).map((m) => m * 2).reduce((r1, r2) => r1 + r2);
+        console.log(result);
+
+
+    </script>
+</body>
+
+</html>

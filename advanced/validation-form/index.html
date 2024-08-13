@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>validation form</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand text-light" href="#">Register</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container mt-5">
+        <form id="form" autocomplete="off">
+            <div class="form-group">
+                <label class="mb-1" for="name">name</label>
+                <input type="name" class="form-control" id="name" placeholder="name">
+                <i class="fa-solid fa-circle-check"></i>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <small>error</small>
+            </div>
+            <div class="form-group">
+                <label class="mb-1" for="email">email</label>
+                <input type="email" class="form-control" id="email" placeholder="email">
+                <i class="fa-solid fa-circle-check"></i>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <small>error</small>
+            </div>
+            <div class="form-group">
+                <label class="mb-1" for="phone">phone</label>
+                <input type="number" class="form-control" id="phone" placeholder="phone">
+                <i class="fa-solid fa-circle-check"></i>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <small>error</small>
+            </div>
+            <div class="form-group">
+                <label class="mb-1" for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password">
+                <p type="button" id="toggleButton" onclick="togglePasswordVisibility()">Show</p>
+
+                <i class="fa-solid fa-circle-check"></i>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <small>error</small>
+            </div>
+            <div class="form-group">
+                <label class="mb-1" for="repassword">Password</label>
+                <input type="password" class="form-control" id="repassword" placeholder="repassword">
+                <i class="fa-solid fa-circle-check"></i>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <small>error</small>
+            </div>
+            <button type="submit" class="btn btn-primary mt-5">Submit</button>
+        </form>
+    </div>
+
+
+    <script type="text/javascript">
+
+        // for success full message alert
+
+        function sendData(count, formRate){
+            if(count == formRate){
+                alert('registration successfull');
+            }
+        }
+
+        function successalert(){
+            const classParent = document.querySelector('.form-group');
+            let count = classParent.length - 1;
+            for(var i = 1; i < classParent.length; i++){
+                if(classParent[i].className=="form-group success"){
+                    var formRate = 0 + i;
+                    sendData(formGroup, count);
+                }else{
+                    return false;
+                }
+            }
+        }
+
+        // ===========================================>
+
+
+        const form = document.querySelector("#form");
+        const nameVal = document.querySelector("#name");
+        const emailVal = document.querySelector("#email");
+        const phoneVal = document.querySelector("#phone");
+        const passwordVal = document.querySelector("#password");
+        const repasswordVal = document.querySelector("#repassword");
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault(); //submit remove
+
+            validate();
+        });
+
+        const isEmail = (emailVal) => {
+            const atsign = emailVal.indexOf('@');
+            if (atsign < 1) return false;
+            const dot = emailVal.lastIndexOf('.');
+            if (dot <= atsign + 2) return false;
+            if (dot === emailVal.length - 1) return false;
+            return true;
+        }
+
+        function specialCharacter(input) {
+            // Check for at least one special character (@, #, $) and first letter is capital
+            const specialCharacters = /[@#$]/;
+            const firstCharUppercase = /^[A-Z]/;
+
+            return specialCharacters.test(input) && firstCharUppercase.test(input);
+        }
+
+        function togglePasswordVisibility() {
+            var passwordField = document.getElementById("password");
+            var toggleButton = document.getElementById("toggleButton");
+
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleButton.textContent = "Hide";
+            } else {
+                passwordField.type = "password";
+                toggleButton.textContent = "Show";
+            }
+        }
+
+
+        // define validate function
+
+        function validate() {
+            const nameValue = nameVal.value.trim();
+            const emailValue = emailVal.value.trim();
+            const phoneValue = phoneVal.value.trim();
+            const passwordValue = passwordVal.value.trim();
+            const repasswordValue = repasswordVal.value.trim();
+
+            // validate name field
+            if (nameValue === "") {
+                setErrorMsg(nameVal, 'Name cannot be blank');
+            } else if (nameValue.length <= 2) {
+                setErrorMsg(nameVal, 'Name must be at least 3 characters');
+            } else {
+                setSuccessMsg(nameVal);
+            }
+
+            // validate email field
+            if (emailValue === "") {
+                setErrorMsg(emailVal, 'Email cannot be blank');
+            } else if (!isEmail(emailValue)) {
+                setErrorMsg(emailVal, 'Email is not valid');
+            } else {
+                setSuccessMsg(emailVal);
+            }
+
+            // Validate a Phone
+
+            if (phoneValue === "") {
+                setErrorMsg(phoneVal, 'phone cannot be blank');
+            } else if (phoneValue.length < 10) {
+                setErrorMsg(phoneVal, 'min 10 number required');
+            } else {
+                setSuccessMsg(phoneVal);
+            }
+
+            // Validate a Password
+
+            if (passwordValue === "") {
+                setErrorMsg(passwordVal, 'Password cannot be blank');
+            } else if (passwordValue.length <= 5) {
+                setErrorMsg(passwordVal, 'Minimum 6 characters required');
+            } else if (!specialCharacter(passwordValue)) {
+                setErrorMsg(passwordVal, 'Password must contain at least one special character (@, #, $) and the first letter must be uppercase');
+            } else {
+                setSuccessMsg(passwordVal);
+            }
+
+            // Validate Confirm Pasdsword
+
+            if (repasswordValue !== passwordValue) {
+                setErrorMsg(repasswordVal, "Password doesn't match");
+            }
+            else{
+                setSuccessMsg(repasswordVal);
+            }
+
+            successalert();
+        }
+
+        function setErrorMsg(input, errormsg) {
+            const formGroup = input.parentElement;
+            const small = formGroup.querySelector('small');
+            formGroup.className = "form-group error";
+            small.innerText = errormsg;
+        }
+        function setSuccessMsg(input) {
+            const formGroup = input.parentElement;
+            formGroup.className = "form-group success";
+        }
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

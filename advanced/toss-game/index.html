@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flip a Coin</title>
+    <style>
+        .container {
+            text-align: center;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="toss">Flip a coin</h1>
+        <div class="image">
+            <h4 class="your-choise">You choose head</h4>
+            <img src="./toss.png" alt="">
+        </div>
+        <div class="computer">
+            <h4 class="c-choise"></h4>
+            <img src="" alt="" class="com-img">
+        </div>
+        <p class="loss"></p>
+        <p class="win"></p>
+        <button class="toss" onclick="toss()">Flip The Coin</button>
+    </div>
+
+    <script>
+        let loss = 0;
+        let win = 0;
+        function toss() {
+            let number = Math.floor(Math.random() * 2 + 1); // Generates 1 or 2
+            let image = document.querySelector('.com-img');
+            let choise = document.querySelector('.c-choise');
+
+
+            if (number === 1) {
+                choise.innerHTML = 'You lost';
+                image.src = './toss2.png';
+                loss += 1;
+                document.querySelector('.loss').innerHTML = 'losses' + loss;
+            } else {
+                choise.innerHTML = 'You won';
+                image.src = './toss.png';
+                win += 1;
+                document.querySelector('.loss').innerHTML = 'win' + win;
+            }
+        }
+    </script>
+</body>
+
+</html>

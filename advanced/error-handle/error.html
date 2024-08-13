@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>error handling</title>
+</head>
+<body>
+    <script>
+        try{
+            console.log(x);
+        }
+        catch(err){
+            // custom error
+            // retry block
+            // fallback mechanism
+            // blogging => print error, variable, message to the console
+            
+            console.log("data not found");
+            console.log("the error is => ", err);
+        }
+
+        // throw custom error
+
+         try {
+                console.log(x);
+            }
+            catch (err) {
+               throw new Error("data not found", err);
+            }
+            finally{
+                console.log("amar hai hum, hum to chalenge hi !!")
+            }
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    closure
+</body>
+<script>
+    function Adjectifier(greeting){
+        return function (name){
+            return `${greeting}, ${name}`;
+        };
+    }
+
+    const callCloser = Adjectifier("!! nice");
+    callCloser("mickey");
+    callCloser("ten");
+
+    console.log(callCloser);
+
+
+    //Curry Function
+
+    function curryfunc(greeting){
+        return function(name){
+            return `${greeting} ${name}`;
+        };
+    }
+
+    const currycall = curryfunc("!! Hey");
+    currycall("Charlie");
+
+    console.log(currycall);
+
+    // Exercize
+
+    // => Simple function
+
+    function writeMessage(message, salutation, name) {
+            return `${message}, ${salutation}, ${name}</p>`;
+        }
+
+    console.log(writeMessage(
+            "You're doing amazing! Hopefully these exercises help you get a bit _closure_ to your programming goals.",
+            "Keep _currying_ on",
+            "Functional Pungrammer"
+        ));
+
+    // This Function with closure
+    
+    function writeline(salutation)
+    {
+        return (name, message) => {
+        
+                console.log(name, salutation, message);    
+    
+        }
+    }
+
+    const readline = writeline("great");
+    readline("addy", "i heared you");
+
+    // Second One ===================>>>
+
+    function makeFunc(name) {
+            
+            function displayName() {
+                console.log(name);
+            }
+            return displayName;
+        }
+
+        const myFunc = makeFunc("Mozilla");
+        myFunc();   
+    
+    // Second One ===================>>>
+
+    const add = (x, y) => (a, b) => x - y + a - b
+            //function1 //function2
+    const data = add(2, 3)(4, 5)
+    console.log(data);
+    
+</script>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object</title>
+</head>
+
+<body>
+    <script>
+        //object contain number, variable, string...
+        // object have object called nested object
+        // object can containe function as object
+
+        let product = {
+            name: 'cycle',
+            price: 700,
+            brand: 'yamaha',
+            tax: {
+                sgst: 7,
+                cgst: 7
+            },
+            charges: function () {
+                return `${this.price + this.tax.cgst + this.tax.sgst}`;
+            }
+        }
+        console.log(product.charges());
+
+        // Object work on referece, not actual data
+        let p = {pop : 'aeiou'};
+        let q = p;
+        console.log('p = ' + p + ' q = ' + q); 
+        //change one reference it's effect on all object
+        //when compare the object they compare reference not data
+        console.log(p == q); //true
+        let r = { pop: 'aeiou' };
+         console.log(r == p); //false
+        
+
+
+        // AutoBoxing -: this help to convert primitive to object and allow method for primitive data types like length, toLoweCase....
+
+        console.log('hello this auto boxing'.length);
+        console.log('hello this auto boxing'.toUpperCase());
+
+
+
+    </script>
+</body>
+
+</html>

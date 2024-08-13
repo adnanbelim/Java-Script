@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // Java Script is a synchrones... but sometimes we used async js
+    // to know code is async...
+    // 1. setTimeout
+    // 2. setInterval
+    // 3. XMLhttpRequest
+    // 4. promise
+    // 5. fetch
+    // 6. axios => package
+
+    setTimeout(() => {
+        console.log("Its setTimeOut the async code");
+    }, 3000);
+
+    var promise = new Promise((resolve, reject) => {
+
+        var randome = Math.random() * 10; //it give 1-9 number
+
+        if (randome > 5) {
+            return resolve('above');
+        }
+        else {
+            return reject('Below')
+        }
+    });
+
+    promise.then((data) => {
+        console.log(data); 
+    }).catch((data) => {
+        console.log(data);
+    })
+</script>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        var ages = [10,19,11,20];
+       document.write(ages + "<br>");
+       var b = ages.some(checkAdult);
+       document.write(b + "<br>");
+       function checkAdult(age){
+        return age >= 18;
+       }
+       var b = ages.every(checkAdult);
+       document.write(b + "<br>");
+       function checkAdult(age){
+        return age >= 18;
+       }
+       
+    </script>
+<title></title>
+</head>
+<body>
+
+</body>
+</html>

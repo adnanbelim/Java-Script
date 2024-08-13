@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>js code</title>
+<script>
+    var str = "100";
+    var num = Number(str); //Number convert any value in number.
+     document.write(num + "<br>");
+
+     
+    var str = 100.16;
+    var num = parseInt(str); //it is give only integer value other NaN(not a number).
+     document.write(num + "<br>");
+
+     
+    var str = 100.16;
+    var num = parseFloat(str);  //it is give only float value other NaN(not a number).
+     document.write(num + "<br>");
+
+     
+    var str = 12345;
+    var num = Number.isFinite(str); //isFinite check value is finite or not.
+     document.write(num + "<br>");
+
+     
+    var str = 100.16;
+    var num = Number.isInteger(str); //isFinite check value is integer or not.
+     document.write(num + "<br>");
+
+     
+    var a = 100.16562454;
+    var num = a.toFixed(2);
+     document.write(num + "<br>"); //it return round/f value.
+
+     
+    var a = 100.16562454;
+    var num = a.toPrecision(4); //it return round/f value.
+     document.write(num + "<br>");
+</script>
+</head>
+<body>
+</body>
+</html>

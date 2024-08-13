@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    Recursion...
+    
+</body>
+<script>
+
+    //iteration
+
+    function sum(numbers){
+        total = 0;
+        for(i = 0; i < numbers.length; i++)
+        {
+            total += numbers[i];
+        }
+        return total;
+    }
+
+    console.log(sum([12, 1, 5, 5]));
+
+
+    //recursion
+
+    function add(numbers){
+        if(numbers.length == 1)
+        {   
+            //base case (using to escape from infinite loop)
+            return numbers[0];
+        }
+        else
+        {
+            //recursive case
+            return numbers[0] + add(numbers.slice(1));
+        }
+    }
+
+    console.log(add([1,2,3,4,5]));
+
+
+    
+    //iteration factorial
+
+    function iterativefac(n) {
+        f = 1;
+        for (i = 1; i <= n; i++) 
+        {
+            f *= i;
+        }
+            return f;
+        }
+
+    console.log(iterativefac(6));
+
+    //recursive factorial
+
+    function recursivefac(n){
+        if(n === 0) return 1;
+        return n * recursivefac(n-1);
+        //loop limit * //increament in loop
+    }
+
+    console.log(recursivefac(6));
+
+    
+    //iteration Fibonacci
+
+    function iterativefibo(n){
+        if (n == 0) return 0;
+        if (n == 1) return 1;
+
+        let a = 0;
+        let b = 1;
+        let c;
+        for(i = 1; i < n -2; i++)
+        {
+            c = a + b;
+            a = b;
+            b = c;
+            console.log(c);
+        }
+    }
+
+    iterativefibo(8);
+
+    
+    //recursive Fibonacci
+
+    function recursivefibo(n) {
+        if (n == 0) return 0;
+        if (n == 1) return 1;
+
+        return recursivefibo(n-2) + recursivefibo(n-1);
+            //loop limit       +        //increament in loop
+    }
+
+    iterativefibo(8);
+
+    
+
+</script>
+</html>

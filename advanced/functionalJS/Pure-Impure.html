@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Pure Function vs Impure Function
+</body>
+<script>
+
+    function greet(greeting, name)
+    {
+        return `${greeting} ${name}`;
+    }
+    console.log(greet("hello" , "adnan"));
+
+
+
+    var addNew = 0; //Outside world and it is not an argument of impure function ... (Impure function)
+
+    function impure(a, b) 
+    {
+        addNew = 1;
+        return `${a}  ${b}  ${addNew}`;
+    }
+
+    console.log(impure(4, 5));
+
+</script>
+</html>

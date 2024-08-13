@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+        #container {
+            width: 100%;
+            height: 500px;
+            background-color: transparent;
+          
+        }
+
+        .bulb {
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            border: 1px solid black;
+            background-color: transparent;
+            display: block;
+            margin: 0px auto;
+            
+        }
+
+        button {
+            padding: 10px;
+            font-size: 18px;
+            display: block;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- document object model => use in dynamically chnage of web pages -->
+    <!-- theory write in copy  page number => februry 15-->
+
+    <div id="container">
+        <div class="bulb">
+
+        </div>
+        <button>On</button>
+    </div>
+
+
+</body>
+
+<script>
+
+    let page = document.querySelector("#container");
+    let bulb = document.querySelector(".bulb");
+    let btn = document.querySelector("button");
+    
+    var flag = 0;
+
+    btn.addEventListener("click", () => {
+        if(flag == 0){
+            page.style.backgroundColor = "black";
+            bulb.style.backgroundColor = "yellow";
+            btn.innerHTML = "Off";
+            flag = 1;
+        }
+        else{
+            page.style.backgroundColor = "transparent";
+            bulb.style.backgroundColor = "transparent";
+            btn.innerHTML = "On";
+            flag = 0;
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        document.write("<table border='2'>");
+        document.write("<tr>");
+        document.write("<th>");
+        document.write("even number");
+        document.write("</th>");
+        document.write("<th>");
+        document.write("odd number");
+        document.write("</th>");
+        document.write("<tr>");
+        document.write("<tr>");
+        document.write("<td>");
+        for (var a = 1; a <= 10; a++) {
+            if (a % 2 == 0) {
+                document.write(a + "<br>")
+            }
+
+        }
+
+        document.write("</td>");
+        document.write("<td>");
+
+        for (var a = 1; a <= 10; a++) {
+            if (a % 2 !== 0) {
+                document.write(a + "<br>")
+            }
+
+        }
+        document.write("</td>");
+        document.write("</tr>");
+        document.write("</table>");
+
+
+    </script>
+    <title>js code</title>
+</head>
+
+<body>
+
+</body>
+
+</html>

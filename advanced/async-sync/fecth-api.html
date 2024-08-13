@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // through then catch 
+
+    function abcd() {
+        fetch('https://randomuser.me/api/')
+            .then((raw) => {
+                return raw.json();
+            }).then((data1) => {
+                console.log(data1);
+            }).catch((err) => {
+                if (err) throw err;
+            })
+    }
+    abcd();
+
+    // through async await
+
+        async function abd() {
+            let raw = await fetch('https://randomuser.me/api/')     //await = waiting for request
+            let ans = await raw.json();                             //await = waiting for response
+            console.log(ans); 
+        }
+        abd();
+</script>
+
+</html>

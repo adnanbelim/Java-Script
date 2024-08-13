@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Practice</title>
+</head>
+
+<body>
+    <!-- Create Object -->
+    <!-- Object Reference -->
+    <!-- display delivery-time -->
+    <!-- use de-structuring method and make variable of message, status -->
+    <!-- make function to compare two object -->
+
+    <script>
+        let price = 250;
+        let myntra = {
+            name: 't-shirt',
+            delivery_time: '29/10/2020',
+            message: 'Thank You',
+            status: 'complete',
+            price, //property shorthand,
+            // method shorthand
+            quntaty() {
+                console.log('2');
+            }
+        }
+
+        let product = myntra;
+        product.name = 'pant';
+
+        console.log(product.delivery_time);
+
+        let { message, status } = myntra;
+        console.log(message + ' ' + status);
+
+        function cmp() {
+            console.log(myntra == product);
+        }
+        cmp();
+
+        // ==============================================================>
+
+        let product1 = {
+            name: 't-shirt',
+            delivery_time: '29/10/2020',
+            message: 'Thank You',
+            status: 'complete',
+            price, //property shorthand,
+            // method shorthand
+            quntaty() {
+                console.log('2');
+            }
+        }
+
+        let product2 = {
+            name: 't-shirt',
+            delivery_time: '29/10/2020',
+            message: 'Thank You',
+            status: 'complete',
+            price, //property shorthand,
+            // method shorthand
+            quntaty() {
+                console.log('2');
+            }
+        }
+
+        function isIdenticalProduct(obj1, obj2) {
+            if (typeof obj1 !== 'object' && obj2 !== 'object') {
+                console.warn('data is not object');
+                return false;
+            }
+            if (obj1 == obj2) {
+                return true;
+            }
+            if (obj1.name == obj2.name && obj1.message == obj2.message && obj1.status == obj2.status) {
+                return true;
+
+            }
+            return false;
+        }
+
+        console.log(isIdenticalProduct(product1, product2));
+    </script>
+</body>
+
+</html>
