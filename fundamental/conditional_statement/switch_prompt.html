@@ -7,18 +7,16 @@
 
         document.write("<h1>switch cases use with prompt box !!</h1>");
 
-        var age = prompt("declair your age : ");
+        const age = prompt("declair your age : ");
 
-        switch (true) {
+        switch (true) {                                 //true => working as condition
 
             case (age >= 10 && age < 25):
                 document.write("you are eligible");
-
                 break;
 
-            case (age >= 25 && age < 35):
+            case (age >= 25 && age < 99):
                 document.write("you are not eligible");
-
                 break;
 
             default:

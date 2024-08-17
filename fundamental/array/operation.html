@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+
+        var a = [11, 33, 22];
+
+        //==============================sort===================================>
+        var result = a.sort();
+        document.write(result + "<br>");
+
+        //==============================reverse===================================>
+        var result = a.reverse();
+        document.write(result + "<br>");
+
+        //==============================concat===================================>
+        var b = [5, 6, 8, 7]
+        var result = a.concat(b);
+        document.write(result + "<br>");
+
+        //==============================High order function===================================>
+        var result = a.map((e) => e * 5);
+        document.write(result + "<br>");
+
+        var result = a.filter((e) => e < 5);
+        document.write(result + "<br>");
+
+        var result = a.reduce((x, y) => x + b);
+        document.write(result + "<br>");
+
+        //==============================delete element from last===================================>
+        a.pop();
+        document.write(a + "<br>");
+
+        //==============================add element in last===================================>
+        a.push(8);
+        document.write(a + "<br>");
+
+        //==============================delete element from start===================================>
+        a.shift();
+        document.write(a + "<br>");
+
+        //==============================add element in start===================================>
+        a.unshift(9);
+        document.write(a + "<br>");
+
+        //==============================join===================================>
+        var d = a.join(" # ");
+        document.write(d + "<br>");
+
+        //==============================slice(start indexing value, end indexing value)===================================>
+        var arr = [0, 1, 2, 3, 4, 5, 6];
+        var result = arr.slice(1, 2);
+        document.write(result + "<br>");
+
+        //==============================splice(start indexing value, value delete(overload) )===================================>
+        a.splice(2, 0, "anil", "sunil");
+        document.write(a + "<br>");
+
+        //==============================some return true or false [normally]===================================>
+        function checkAdult(age) {
+            return age >= 18;
+        }
+        var ages = [10, 19, 11, 20];
+        var b = ages.some(checkAdult);
+        document.write(b + "<br>");
+
+        //==============================every return true or false [strictly]===================================>
+        var b = ages.every(checkAdult);
+        document.write(b + "<br>");
+        function checkAdult(age) {
+            return age >= 18;
+        }
+
+        //==============================starting indexing===================================>
+        var m = ["rahman", "rahim", "majid", "arman", "majid", "sajid"];
+        var b = m.indexOf("majid");
+        document.write(b + "<br>");
+
+        //==============================last indexing===================================>
+        var c = m.lastIndexOf("majid");
+        document.write(c + "<br>");
+
+        //==============================//includes check array and return boolean value===================================>
+        var m = ["rahman", "rahim", "majid", "arman", "majid", "sajid"];
+        var b = m.includes("majid");
+        document.write(b + "<br>");
+
+        //==============================isArray show array or not.===================================>
+        var b = m.isArray(m);
+        document.write(b + "<br>");
+
+        //==============================toString key use to convert array value into string===================================>
+        var a = ["amaan", "adnan", "ayan"];
+        var arr = a.toString();
+        document.write(arr + "<br>");
+
+        //==============================fill key use to replace all value===================================>
+        var b = ["uzair", "umer", "ali"];
+        var arr = b.fill("hello");
+
+        //==============================valueOf key use for print array===================================>
+        document.write(arr.valueOf());
+        document.write("we are delete the array value with help indexing value");
+
+        //==============================deleting element by indexing===================================>
+        var a = ["adnan", "18", "Male", "BCA"]; //modify chat
+        delete a[1]
+        document.write(a); //deletation element
+
+        //==============================modify array using indexing===================================>
+        var a = ["adnan", "18", "Male", "BCA"]; //modify chat
+        a[0] = "sunny";
+        document.write(a);
+        document.write("<br>");
+
+    </script>
+    <title></title>
+</head>
+
+<body>
+
+</body>
+
+</html>
