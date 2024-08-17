@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>function difference</title>
+</head>
+
+<body>
+    <script>
+        function declair() {
+            console.log("It's Function Declairation");
+        }
+
+        // declairation function are supported hoisting means its used before define
+
+        let expression = function () {
+            console.log("It's Function expression");
+        }
+
+        // expression function are not supported hoisting means its used after define
+
+        // function expression have two type 
+        // 1. Anonymous Function
+        // 2. Named Function
+
+        // Let's try Anonymous function
+
+        let anonym = function () {
+            console.log("It's Function Anonymous");
+        }
+
+        // => anonymous function have no name 
+        // => it is used as temporary like callback
+
+        // Let's try Named function
+
+        let Named = function naming() {
+            console.log("It's Function Anonymous");
+        }
+
+        // => Named function have name
+        // => it is used as debbuging
+
+
+    </script>
+</body>
+
+</html>
