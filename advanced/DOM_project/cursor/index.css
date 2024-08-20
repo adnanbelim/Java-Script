@@ -1,0 +1,26 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.home{
+    position: relative;
+}
+.container{
+    height: 800px;
+    width: 100%;
+}
+.shadow{
+    border: 1px solid yellow;
+    font-size: 100px;
+    margin-top: 200px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.crsr{
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    background-color: #fff;
+    transition: all linear 0.1s;
+    border-radius: 50%;
+    mix-blend-mode: difference;
+}
