@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+
+        const a = [1, 5, 6, 2];
+        for (data in a) {
+            document.write(a[data] + "<br>");
+        }
+
+        var result = a.sort();
+        document.write(result + "<br>");
+
+        var result = a.reverse();
+        document.write(result + "<br>");
+
+        let b = [5, 6, 8, 7]
+        var result = a.concat(b);
+        document.write(result + "<br>");
+
+        var result = a.map((e) => e * 5);
+        document.write(result + "<br>");
+
+        var result = a.filter((e) => e < 5);
+        document.write(result + "<br>");
+
+        var result = a.reduce((x, y) => x + b);
+        document.write(result + "<br>");
+
+        a.pop();
+        document.write(a + "<br>");
+        a.push(8);
+        document.write(a + "<br>");
+
+    </script>
+    <title></title>
+</head>
+
+<body>
+
+</body>
+
+</html>
