@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // # Primitive ===================================================
+
+        // Primitive data types => represents as single value and its a bacix type of data type that are not object and do not have method like object 
+        
+        // number
+        // string
+        // boolean
+        // null
+        // undefined
+        // symbol
+        // bigInt
+
+        let a = 2;
+        let b = "hello"
+        let c = true
+        let d = null
+        let e = undefined
+        let f = Symbol('@');
+        let g = BigInt(5); //5n => we can declair like this
+
+        // # Boxing and Unboxing ===================================================
+
+        // Primitive types do not have method but in java script using boxing method we can use object method on primitive data type like number string boolean 
+
+        // boxing simply wrap primitive data type into object and after called method it's discard by Un-Boxing method and you're left a primitive value 
+
+        console.log('hello'.charAt(0)); // 'h'
+        let n = 123
+        console.log(n.toFixed(2)); // '123.00' 
+        let bool = true
+        console.log(bool.toString()); // 'true'
+
+        // # Undefined and Declaired ===================================================
+
+        let undef;
+        
+        // console.log(undef); //undefined value
+        // console.log(undeclair); //undeclaired variable
+        
+        // # NaN 
+
+        // Not a number , we can say invalid number
+
+        let age = Number(12) // true
+        let neg
+        let age1 = Number("12"); // true
+        let str = Number("12ABC"); // NaN
+        let bool1 = Number(true); // true OOPS!!
+        console.log(age);
+        console.log(age1);
+        console.log(str);
+        console.log(bool1);
+        console.log(typeof(str)); //number OOPS!!
+        console.log(str == str); // false OOPS!!
+
+        // # isNaN 
+        // check is not a number ..
+
+        console.log(isNaN(str)); //true
+        console.log(isNaN(bool1)); //false
+        console.log(isNaN(age)); //false
+        
+        console.log(null == null); // true
+        console.log(undefined == undefined); // true
+        console.log(NaN == NaN); // false OOPS!!
+        console.log(Object.is(NaN, NaN)); //true  
+        
+
+        console.log(Boolean(bool1)); //true
+
+        // # Negative zero 
+        
+        let negativeZero = -0;
+        console.log(negativeZero.toString()); // '0' OOPS!!
+        console.log(negativeZero == 0); //true 
+        console.log(negativeZero === 0); //true
+        console.log(negativeZero > 0); //false
+        console.log(negativeZero < 0); //false
+
+        // Object.is : similiar to '===' but it's compare precisly (pure)
+
+        console.log(Object.is(negativeZero, -0)); //true
+        console.log(Object.is(negativeZero, 0)); //false
+
+        // check value OR zero is negative or positive 
+
+        function sign(z){
+            return z !== 0 ? Math.sign(z) : Object.is(z, -0) ? -1 : 1; 
+        }
+        
+        sign(-3) //-1 (negative)
+        sign(3) //1 (positive)
+        sign(0) //1 (positive)
+        sign(-0) // (negative)
+        
+        // # fundamental Object
+        // bUILT IN OBJECT IN JS we can say native function
+
+        // Constructor keyword new
+
+        // use with Date(), Array(), RegExp(), Object()
+        // Dont't use with String(), Number(), Boolean() it's using in coersion
+
+        
+
+
+</script>
+</body>
+</html>
