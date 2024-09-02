@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coersion Practice</title>
+</head>
+
+<body>
+    <script>
+        // Embrace Coercion:
+        console.log("5" + 3); // "53" (string concatenation)
+        console.log("5" - 2); // 2 (numeric subtraction)
+
+        // Design for Clarity:
+        function add(a, b) {
+            return a + b;
+        }
+        console.log(add(4, 5)); // add two number
+        console.log(add("4", "5")); //string concatenation
+
+        // Be Explicit About Types
+
+        let num = 123;
+        console.log(String(num)); // "123"
+
+        let str = "456";
+        console.log(Number(str)); // 456
+
+        let value = "789";
+        console.log(+value);     // 789 (unary plus operator)
+
+       // usefull : when the reader is focused on what's important
+       // dangerous : when the reader can't explain what will happen
+       // better : when the reader understand the code 
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coersion</title>
+</head>
+
+<body>
+    <script>
+        // Coersion AKA type Convertion
+
+        /* Type conversion(or type casting) is the process of changing a value from one data type to another.For example, converting an integer to a string or a floating - point number to an integer.
+
+        Coercion in programming often refers to automatic type conversion done by the language itself, where the language automatically changes one data type to another to perform operations, like adding a string to a number.This is usually done implicitly by the language to make operations easier or more intuitive.
+        
+        So, while coercion and conversion both involve changing data types, coercion is typically automatic and implicit, whereas conversion can be either implicit or explicit(manual). */
+
+        // Coercion (Impicit Convertion)
+
+        console.log("5" + 5); // 10
+
+        // language automatic convert string to number that's called impilicit
+
+        // Convertion (may be inplicit OR explicit)
+
+        // # Abstract Operation 
+        // this operations part of impilicit convertion and execute by Language 
+        // abstract operation ToPrimitive convert Object to primitive value like number and string with the help of valueOf() and toString() function... this convertion auto-matically run
+
+        // # toString 
+        // It's a Method is JS may be it's can be part of ToPrimitive (a Abstract operation)...
+
+        // Example : A toString method using as Abstract operation
+        let obj = {
+            toString() {
+                return "Hello I am implicit !!"
+            }
+        }
+
+        console.log(String(obj)); // Hello I am implicit !!
+
+        // Example : A String method using as Explicit operation conver primitive value into string
+        /*
+            String() Function:
+    
+                A global function that converts any value to a string.
+                Directly converts primitives to strings without object wrapping.but Boxing() not involved when using String() for conversion.
+                For objects, it calls the object's toString() method.
+                When String() is called with non - primitive data types(like objects), JavaScript internally calls the toString() method of those objects to get their string representation.
+        */
+
+        console.log(String(null)); // "null"
+        console.log(String(undefined)); // "undefined"
+        console.log(String(true)); // "true"
+        console.log(String(123)); // "123"
+        console.log(String(-0)); // "0"
+        console.log(String(0)); // "0"
+
+        /*
+            toString() Method:
+            
+                Available on both objects and primitives (via temporary wrapping).
+                Converts the value to a string representation.
+                For primitives, JavaScript temporarily wraps them in their corresponding object type (e.g., Number, String) to call the method.
+            */
+        // so we can say string used in only explicit method but toString may be explicit OR implicit 
+
+        console.log([].toString()); //""
+        console.log([1, 2, 3].toString()); // "1,2,3"
+        console.log([1, null, 2].toString()); // "1,,2"
+        console.log({}.toString()); // "[object,Object]"
+        console.log({ name: 'Addy' }.toString()); // "[object,Object]"
+        let num = 123;
+        console.log(num.toString());
+        let bool = false;
+        console.log(bool.toString());
+
+        /*
+        ### Number() vs. toNumber():
+
+        Number() Function:
+            A global function that converts any value to a number.
+            Handles both primitives and objects, but performs explicit conversion.
+            toNumber(): Not a standard JavaScript function. The standard function for conversion to a number is Number()
+        */
+
+        // toNumber apply on primitive
+        // toNumber isn't a method in JS 
+        let num1 = .0;
+        console.log(Number(num1)); // 0
+        console.log(Number("12")); // 12
+        console.log(Number("7.14")); // 7.14
+        console.log(Number(".")); // NaN
+        console.log(Number("Hello")); // NaN
+        console.log(Number("0x2F")); // 47 (ASCII Convert)
+        console.log(Number("")); // 0
+        console.log(Number(null)); // 0
+        console.log(Number(undefined)); // NaN
+        console.log(Number(true)); // 1
+
+        // toNumber apply on non-primitive
+        // internally work toString() method then apply Number() method
+        
+        console.log(Number([])); // 0 (default empty.toString() returns "" which becomes 0)
+        console.log(Number([1, 2])); // NaN (default [1,2].toString() returns "1,2" which becomes NaN)
+        console.log(Number([null])); // 0
+        console.log(Number([undefined])); // 0 !!Oops
+        console.log(Number([true])); // 1
+        console.log(Number({})); // NaN
+        console.log(Number({ name: 'alice' })); // NaN
+
+
+        // with Object
+
+        let customObj = {
+            valueOf() {
+                return 3;
+            }
+        };
+        let numCustomObj = Number(customObj); // 3 (valueOf() returns 3)
+
+        let customStrObj = {
+            toString() {
+                return "10";
+            }
+        };
+        let numCustomStrObj = Number(customStrObj); // 10 (toString() returns "10")
+
+        console.table(numCustomObj, numCustomStrObj)
+        // ### toBoolean 
+        // In JS do not have function toBoolean 
+        // Boolean() method have in JS
+
+        // this are falsy values
+        console.log(Boolean(0));
+        console.log(Boolean(-0)); 
+        console.log(Boolean(0n));
+        console.log(Boolean(""));
+        console.log(Boolean(null));
+        console.log(Boolean(undefined));
+        console.log(Boolean(false));
+        console.log(Boolean(NaN));
+
+        // ### Coercion Overview
+
+        // Template Literals and Coercion: `${5}` The number `5` is coerced to a string automatically because template literals expect a string.
+
+        // Operator Overloading: `"Hello" + 5` The + operator prefers string concatenation if either operand is a string. So, 5 is coerced to "5", resulting in "Hello5".
+
+        // Explicit vs. Implicit Coercion: explicit `String(123) or Number("123")` & implicit is `123 + ""`
+
+        // toString : wrapped dataTypes in object temporary
+
+        //Special Cases: 
+        // 1) Empty String: An empty string "" coerced to a number results in 0 because the + operator (unary plus) converts it to a number.
+        // 2) NaN: Non - numeric strings like "abc" coerced to a number result in NaN.
+
+        // Boolean Coercion: 7-8 falsy values 0, -0, 0n, "", NaN, null, undefined, false
+        
+        // we can boolean value using this two exlemetry sign !!
+        console.log(!!{}); //true
+        
+    </script>
+</body>
+
+</html>
