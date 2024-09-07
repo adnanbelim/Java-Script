@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scope</title>
+</head>
+
+<body>
+    <script>
+        // Scope Units: JavaScript primarily uses functions and blocks (introduced in ES6) as units of scope. Variables declared within a function or block are only accessible within that scope.
+
+        // Lexical Scope: Lexical scope determines where variables and functions are accessible in your code based on their position. javascript engion creating an abstract syntax tree (AST), and then sets up the lexical environment.
+
+        // Scope and Execution: JavaScript performs a "compilation" step before executing code.
+
+        // Outer function scope
+        function outerFunction() {
+            let outerVar = 'I am from outer function';
+
+            // Inner function scope
+            function innerFunction() {
+                let innerVar = 'I am from inner function';
+                console.log(outerVar); // Accessible because innerFunction is within outerFunction's scope
+                console.log(innerVar);  // Accessible within its own scope
+            }
+
+            innerFunction();
+            console.log(outerVar); // Accessible here as well
+            //console.log(innerVar); // Error: innerVar is not defined in outerFunction's scope
+        }
+
+        outerFunction();
+
+        // ## Lexical Scope and Compilation: JavaScript code is processed in two main phases: compilation and execution. During compilation, the JavaScript engine sets up the scope for variables and functions.
+
+        var teacher = 'Global Teacher';
+
+        function school() {
+            var teacher = 'Local Teacher';
+            console.log(teacher); // logs Local Teacher
+        }
+
+        function collage() {
+            var greet = 'Hello';
+            console.log(`${greet} ${teacher}`); // logs Global Teacher
+        }
+
+        school();
+        collage();
+
+        // ### Lexical Scope is Determined at Compile Time
+
+        // Code Execution
+        // Two-Step Processing:
+        /*
+        => Compile - Time: 
+                1) Scope and variable setup.
+                2) Scope Manager and Compiler work together to create a plan for variable identifiers and   their scope
+                3) During this stage, variables and functions are declared and associated with their respective scopes, but the code isn’t actually executed yet.
+
+        => Run - Time:
+                1) Actual code execution using the pre-set scope plan.
+                2) The JavaScript engine uses the prepared plan to execute the code, accessing and manipulating the variables and functions as needed. 
+        */
+        var teacher = "John";
+        function otherClass() {
+            var teacher = "Jane";
+            console.log(teacher);
+        }
+        function ask() {
+            var question = "Why?";
+            otherClass(); //ask() and otherClass() is global scope function so they can call in entire programe...
+        }
+        ask(); //logs Jane
+
+
+        // ### Scope of function and variable
+
+        // Function Calls: Functions declared in the global scope can be called from other functions, even if they are nested or in different scopes.
+        function otherClass() {
+            var teacher = "Jane";
+            console.log(teacher);
+        }
+        function ask() {
+            var question = "Why?";
+            otherClass(); //ask() and otherClass() is global scope function so they can call in entire programe...
+        }
+        // Variable Scope: Local variables within functions do not affect or overwrite global variables with the same name; they are contained within their own scope.
+        var teacher = "John";
+        function otherClass() {
+            var teacher = "Jane";
+            console.log(teacher); // logs Jane
+        }
+        // Variable References: The engine looks up variable references first in the local scope and then in the global scope if not found locally.
+        var teacher = "John";
+        function otherClass() {
+            console.log(teacher); // logs John 
+        }
+
+        // ### Compilation Time
+        var teacher = "Kyle"; // Global scope
+
+        function otherClass() {
+            teacher = "Suzy"; // Function scope attempts to modify the global variable
+        }
+
+        otherClass(); // Function call and variable "teacher" updated with Suzy because otherClass fn created in global scope
+
+        console.log(teacher); // Output: "Suzy"
+
+        // ### Compile time variable innitialization using let 
+
+        let teacher = "Kyle"; // Global scope
+
+        function otherClass() {
+            let teacher = "Suzy"; // This creates a new 'teacher' variable in the local scope of 'otherClass'
+        }
+
+        otherClass();
+
+        console.log(teacher); // Output: "Kyle"
+
+
+        // ### xxxxxxxxxx Dynamic Global variable xxxxxxxxxx
+
+        var principle = 'Jack';
+
+        function change() {
+            principle = "Kyle"
+            branch = "Head" // implicit global variable declaired (dynamic global variable)
+        }
+
+        change(); // function invoked and principle value updated with "Kyle"
+        console.log(principle);
+        console.log(branch); // Automatic Variable declaired in global scope in un-stricted mode
+
+        // ### ======== Strict Mode ========
+        // strict mode not allow to create implicit global variable and auto-global variables is crucial for writing predictable and bug-free code. Always declare your variables explicitly to avoid accidental global variables and potential issues.
+
+        // 'use strict' => write on the top
+
+        board = 'black';  // Reference error : variable not defined
+        console.log(board);
+
+        // ### Nested Scope ==================xxxxxxxxxxxxx==================
+
+        function outerFunction() {
+            var teacher = "Alice"; // Declared in the outer function scope
+
+            function innerFunction() {
+                var question = "Why?"; // Declared in the inner function scope
+                console.log(teacher); // Accesses 'teacher' from outer function scope
+                console.log(question); // Accesses 'question' from its own scope
+            }
+
+            innerFunction();
+            //console.log(question); // Error: 'question' is not defined in this scope
+        }
+        outerFunction();
+
+        // Important !!!
+        // innerScope can access outerScope variable but outeScope can't access innerScope variable
+        // The key takeaway is that JavaScript uses lexical scoping...
+
+        // ### undefined vs undeclaired
+
+        var undef;
+        console.log(undef); // logs : Undefined
+        // console.log(undec); => error identifier undec is not declaired
+
+        // Lexical Scope 
+        // Current scope => mediate scope => high scope
+
+        let globalVar = 'I am global'; // Global scope (Top floor)
+
+        function outerFunction() {
+            let outerVar = 'I am in outerFunction'; // Outer function scope (Intermediate floor)
+
+            function innerFunction() {
+                let innerVar = 'I am in innerFunction'; // Inner function scope (Current floor)
+
+                // Looking for 'innerVar'
+                console.log(innerVar); // Output: 'I am in innerFunction'
+
+                // Looking for 'outerVar'
+                console.log(outerVar); // Output: 'I am in outerFunction'
+
+                // Looking for 'globalVar'
+                console.log(globalVar); // Output: 'I am global'
+            }
+
+            innerFunction();
+        }
+
+        outerFunction();
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equality</title>
+</head>
+
+<body>
+    <script>
+        // double equality (==) : Loose equality
+        console.log('5' == 5); //true
+        // Triple equality (===) : Strict equality
+        console.log('5' === 5); //false
+
+        let name = 'Addy';
+        let rename = `${name}`;
+
+        console.log(name == rename); // true
+        console.log(name === rename); // true
+
+        let number = 16;
+        let againNumber = 16 + 0;
+
+        console.log(number == againNumber); // true
+        console.log(number === againNumber); // true
+
+        console.log(null == undefined); // true Oops!
+        console.log(null === undefined); // false
+
+        console.log(Number('hello') == 12); //false
+
+        // double equal allow coercion 
+
+        console.log(null == undefined) // true (Special rule of js)
+        console.log(null == null) // true
+        console.log(undefined == undefined) // true
+        console.log(true == 1) // true
+        console.log(false == 0) // true
+        console.log("42" == 42) // true
+
+        // Triple equal not allow coercion
+
+        console.log(null === undefined); //false
+        console.log('5' === 5); //false
+        console.log(true === 1); //false
+        console.log(false === 0); //false 
+
+        // Object and Primitive
+        console.log('5' == new String('5'))  // true
+
+        // Coercive Equality null & undefined 
+        // The comparison null == undefined evaluates to true due to a special rule in JavaScript. null and undefined are considered equal to each other but not to any other values.
+
+        let workshop1 = { topic: null };
+        let workshop2 = { topic: undefined };
+
+        // Using double equals to check for both null and undefined
+        if (workshop1.topic == null && workshop1.topic == undefined) {
+            console.log('workshop1.topic is null or undefined');
+        }
+        if (workshop2.topic == null && workshop2.topic == undefined) {
+            console.log('workshop2.topic is null or undefined');
+        }
+
+        // Using triple equals to check for both null and undefined
+        if (workshop1.topic === null && workshop1.topic === undefined) {
+            console.log('workshop1.topic is null or undefined');
+        } else {
+            console.log('false');
+
+        }
+        if (workshop2.topic === null && workshop2.topic === undefined) {
+            console.log('workshop2.topic is null or undefined');
+        } else {
+            console.log('false');
+
+        }
+
+        // Double Equal Algorithem (Understanding Coercion)
+
+        // #1 String and Number Comparison:
+        console.log('5' == 5);   // true (convert string to number)
+
+        // #2. Boolean and Number Comparison:
+        console.log(true == 1);  // true (convert string to number)
+
+        // #3. Object to Primitive Conversion:
+        let obj = {
+            valueOf: function () { return 10; },
+            toString: function () { return '10'; }
+        };
+        console.log(obj == 10);    // true (behind the scene ToPrimitive (abstract operation) convert object to number)
+
+        // #4. Same Type Comparison (String):
+        console.log('hello' == 'hello');  // true
+        console.log('hello' == 'world');  // false
+
+        // #5. Non-Primitive Types Handling:
+
+        console.log([1] == 1);  // true
+        console.log([1] == '1'); // true (the array [1] is converted to the string '1' using the toString() [Abstract Operation] method.) 
+        // console.log([1] === 1); (js not compare strictly object with primitive data types)
+
+        // ### Reference Comparison:
+        console.log([1] == [1]) // false
+        // The comparison == checks if both arrays refer to the same object in memory.
+        // Since the arrays[1] and[1] are two distinct objects, their references are different.
+
+        console.log([] != []); // true (reference are not equal !!)
+
+        // lets check object vs primitive 
+        console.log([] == false);   //true (coerscion work behind the scene)
+        console.log("" == false);   //true
+        console.log(0 == false);    //true
+        console.log(0 === 0);   //true
+        
+        // !!! Avoid == with 0, "" [empty-string], non-primitive...
+
+        /* Message :: 
+                 == is preferable to === when you know the types of the variables being compared. when you don't know the types, === should be used to signal uncertainty and protect against potential type coercion issues.
+        */
+
+
+
+    </script>
+</body>
+
+</html>

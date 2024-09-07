@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>var-let-const</title>
+</head>
+
+<body>
+    <script>
+        // var :
+        /*
+            1) Function Scope: Variables declared with var are function-scoped, meaning they are accessible within the function they are declared in, or globally if declared outside of any function.
+            2) Hoisting: Variables declared with var are hoisted to the top of their scope and initialized with undefined.
+            3) Re-declaration: Variables declared with var can be re-declared within the same scope.
+        */
+
+        function exampleVar() {
+            console.log(x); // undefined (due to hoisting)
+            var x = 10;
+            console.log(x); // 10
+        }
+
+        // let :
+        /*
+            1) Block Scope: Variables declared with let are block-scoped, meaning they are only accessible within the block (enclosed by {}) they are declared in.
+            2) No Hoisting: Variables declared with let are hoisted but not initialized. Accessing them before declaration results in a ReferenceError.
+            3) No Re-declaration: Variables declared with let cannot be re-declared within the same block scope.
+        */
+
+        function exampleLet() {
+            // console.log(y); // ReferenceError (not accessible before declaration)
+            let y = 20;
+            console.log(y); // 20
+        }
+
+        //  const
+
+        /*
+            1) Block Scope: Variables declared with const are also block-scoped.
+            2) No Hoisting: Like let, const variables are hoisted but not initialized. Accessing them before declaration results in a ReferenceError.
+            3) Constant Value: Variables declared with const must be initialized at the time of declaration, and their value cannot be changed (immutable binding). However, objects and arrays assigned to const variables can still be modified.
+        */
+
+        function exampleConst() {
+            // console.log(z); // ReferenceError (not accessible before declaration)
+            const z = 30;
+            console.log(z); // 30
+            // z = 40; // TypeError (cannot reassign a constant variable)
+        }
+
+        // Template literals
+
+        let name = "Alice";
+        let age = 25;
+
+        let message = `Hello, my name is ${name} and I am ${age} years old.`;
+        console.log(message); // "Hello, my name is Alice and I am 25 years old."
+
+        // Multi-line String
+
+        let multiLineString = `
+                            This is a multi-line string.
+                            It spans multiple lines.
+                                `;
+        console.log(multiLineString);
+
+    </script>
+</body>
+
+</html>

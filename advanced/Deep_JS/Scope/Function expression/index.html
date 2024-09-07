@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scope and function expression</title>
+</head>
+
+<body>
+    <script>
+        // function declairation
+
+        // A function declaration is a way to define a function using the function keyword followed by the function name. It is hoisted
+
+        function declaration() {
+            console.log('This is a function declaration');
+        }
+
+        // You can call the function before it's declared... it's hoisted
+        declaration();
+        // Hoisting: Function declarations are hoisted to the top of their scope
+
+        // Function Expression
+
+        // A function expression involves defining a function as part of an expression and assigning it to a variable. Function expressions are not hoisted; only the variable declaration is hoisted, not the function definition.
+
+        var expression = function () {
+            console.log('This is a function expression');
+        };
+
+        // The function can only be called after the assignment
+        expression();
+
+        // Expression function are two types
+        // 1) Function Named => the function reference it-self
+        // 2) Function Anonymous => they have no name
+
+        var named = function naming() {
+            /* code */
+        }
+        // Self-Reference : A named function expression provides a reliable way for the function to reference itself, which is useful for recursion, event handling, or accessing properties on the function object.
+        var factorial = function computeFactorial(n) {
+            if (n <= 1) return 1;
+            return n * computeFactorial(n - 1);
+        };
+        console.log(factorial(5)); // Output: 120
+        // Debugging : Named functions improve stack traces, making debugging easier. Named functions appear in stack traces with meaningful names, whereas anonymous functions show up as "anonymous," making it harder to diagnose issues.
+
+        // => "Diagnose issues" means to identify and understand problems or errors in a system
+
+        // Named function
+        var handleError = function handleError(message) {
+            console.error(message);
+        };
+
+        // Anonymous function
+        var handleError = function (message) {
+            console.error(message);
+        };
+
+        // Self-Documenting Code : A named function makes code more readable and self-explanatory, eliminating the need for additional comments to explain what the function does.
+
+        // Named function (supposed items is array)
+        var calculateTotalPrice = function addPercentage(items) {
+            return items.reduce((item, item1) => item1 + item);
+        };
+
+        // Anonymous function
+        var calculateTotalPrice = function addPercentage(items) {
+            return items.reduce((item, item1) => item1 + item);
+        };
+
+        // ### Arrow Function
+
+        // arrow functions in JavaScript are a type of anonymous function
+        // Arrow functions provide a shorter syntax compared to traditional function expressions.
+
+        // Traditional function expression
+        var add = function (a, b) {
+            return a + b;
+        };
+
+        // Arrow function
+        const add1 = (a, b) => a + b;
+
+        // If the arrow function has only one expression, the return value of that expression is implicitly returned without needing the return keyword.
+
+        // Implicit return
+        const square = x => x * x;
+
+        // Note : Unlike named functions or traditional function expressions, arrow functions don’t have their own this, arguments, or super bindings.
+
+        // => this Binding : In a traditional function expression or function declaration, this refers to the object that is executing the current function.
+
+        function Person(name) {
+            this.name = name;
+            this.greet = function () {
+                console.log('Hello, ' + this.name);
+            };
+        }
+
+        const person = new Person('Alice');
+        person.greet(); // "Hello, Alice"
+
+        // => arguments Object : Traditional functions have access to the arguments object, which is an array-like object containing the arguments passed to the function.
+
+        function sum() {
+            let total = 0;
+            for (let i = 0; i < arguments.length; i++) {
+                total += arguments[i];
+            }
+            return total;
+        }
+
+        console.log(sum(1, 2, 3, 4)); // 10 automatic take number of parameter using arguments object
+
+        // =====xxxxxxxx===== Function Hirarchically
+
+        // Function declairation > function named > function anonymous
+
+        // Function Expression Types 
+
+        // 1) Anonymous Function Expression: No name, typically used for callbacks.
+        var a = function () { /* code */ }
+
+        // 2) Named Function Expression: Has a name, useful for recursion and debugging.
+        var b = function hello() { /* code */ };
+
+        // 3) IIFE: Immediately invoked fn expression, creates a local scope.
+        (function () {
+            console.log('immediatly invoke function expression');
+
+        })(); // logs : immediatly invoke function expression
+
+        // 4) Arrow Function Expression: Concise syntax, no own this, arguments, or super.
+        var d = (a, b) => { return a + b };
+
+        // 5) Function Constructor Expression: Creates functions from strings (less common).
+        var add = new Function('a', 'b', 'return a + b;');
+        console.log(add(2, 3)); // Outputs: 5
+
+        // 6) Async Function Expression: Handles asynchronous operations with await.
+        const fetchData = async () => {
+            let response = await fetch('https://api.example.com/data');
+            let data = await response.json();
+            return data;
+        };
+        fetchData().then(data => console.log(data));
+
+
+        // ==============xxxxxxxxx Exercise with array method using function expression xxxxxxxx========
+
+        // array methods (map(), filter(), find(), reduce(), sort(), forEach()) and see how they work with function expressions in JavaScript.
+
+        // => map() : this method take a array and Creates a new array 
+
+        let arr1 = [1, 2, 3, 4, 5];
+        const result1 = arr1.map((element) => {
+            return element * element;
+        })
+        console.log(result1); // logs : [1,4,9,16,25]
+
+        // => filter() :  Creates a new array with all elements that pass the test implemented by the provided function.
+
+        let arr2 = [1, 2, 3, 4, 5];
+        const result2 = arr2.filter((element) => {
+            return element < 4;
+        })
+        console.log(result2); // logs : [1,2,3]
+
+        // => find() : Returns the first element in the array that satisfies the provided testing function.
+
+        let arr3 = [1, 2, 3, 4, 5];
+        const result3 = arr3.find((element) => {
+            return element > 3;
+        })
+        console.log(result3); // logs : [4]
+
+        // => reduce() : reduce the array and return a single value, It take more than one element
+
+        let arr4 = [1, 2, 3, 4, 5];
+        const result4 = arr4.reduce((element1, element2) => {
+            return element1 + element2;
+        })
+        console.log(result4); // logs : [15]
+
+        // => sort() : Sorts the elements of an array in place and returns the sorted array. The function you provide is used to determine the order of elements.
+
+        let arr5 = [3, 5, 8, 2, 1];
+        const result5 = arr5.find((a, b) => {
+            return a - b;
+        })
+        console.log(result5); // logs : [1,2,3,5,8]
+        // sort() uses the function expression to compare elements a and b. The result determines their order: if the result is negative, a comes before b; if positive, b comes before a.
+
+        // => forEach() : the function expression to each element in the array. It performs an action for each element but does not create a new array
+
+        const numbers = [1, 2, 3, 4, 5];
+
+        // Function expression to print each number
+        numbers.forEach((num) => {
+            console.log(num);
+        });
+
+        // Outputs:
+        // 1
+        // 2
+        // 3
+        // 4
+        // 5
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

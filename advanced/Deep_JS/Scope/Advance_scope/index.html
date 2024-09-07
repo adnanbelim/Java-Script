@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>advanced scope</title>
+</head>
+
+<body>
+    <script>
+        // Lexical Scope & Dynamic Scope
+
+        // Lexical Scope is determined when the code is compiled or parsed.
+        // The scope of variables is fixed and predictable based on the code structure.
+        // Example : In JavaScript, a variable declared within a function is only accessible within that function and its nested functions, but not outside.
+
+        var principle = 'Kyle';
+
+        function outer() {
+            var principle = 'Suzzy';
+            function inner() {
+                console.log(principle);
+            }
+            inner(); // logs : Suzzy
+        }
+
+        outer();
+
+
+        // In dynamic scoping, the scope of variables is determined based on the runtime call stack, not the code structure.
+        // When a function uses a variable that isn't defined in its local scope, it looks up the call stack to find the variable.
+        //  It is influenced (prabhavit) by the sequence of function calls
+        // Less Common: This model is less prevalent in modern programming languages. It is mainly seen in some older or specialized languages.
+
+        // Theoratical dynamic scope example
+        var teacher = "Kyle"; // Global scope
+
+        function ask() {
+            console.log(teacher); // Looks for teacher in the dynamic call stack
+        }
+
+        function otherClass() {
+            var teacher = "Suzy"; // Local scope within otherClass
+            ask(); // Function call
+        }
+
+        otherClass(); // Output would be "Suzy" if dynamic scoping were in use
+
+        // important !!! 
+        // In JavaScript, dynamic scoping is not used; instead, JavaScript uses lexical scoping.
+
+        // ### function scope
+        var name = "Helia"
+        function scope() {
+            var name = "Helina"
+            console.log(name); // logs : Helina
+        }
+        console.log(name); // logs : Helia
+
+        // ### IIFE anonymous fn (Immediately invoked Expression Function)
+
+        var head = "kyle";
+        (function (head) {
+            console.log(head); // suzy
+        })("Suzy");
+        console.log(head); // Kyle
+
+        // Block Scope
+
+        var minister = "kyle"
+        {
+            let minister = "Suzy"
+            console.log(minister); // suzy
+        }
+        console.log(minister); // Kyle
+
+        // Choosing var and let
+
+        // Using var at the top level of a function communicates that the variable is meant to be used throughout the entire function.
+        // Using let suggests that the variable is meant to be used in a specific, localized block or segment of code.
+
+        // Behavioral Differences : Variables declared with var can be redeclared within the same scope, while let does not allow redeclaration in the same scope.
+
+        // example var and let
+
+        function exampleVar() {
+            var id = 1;
+            if (true) {
+                var id = 2; // Same variable
+                console.log(id); // Output: 2
+            }
+            console.log(id); // Output: 2
+        }
+        exampleVar();
+
+        function exampleLet() {
+            let id = 1;
+            if (true) {
+                let id = 2; // Different variable, block-scoped
+                console.log(id); // Output: 2
+            }
+            console.log(id); // Output: 1
+        }
+        exampleLet();
+
+        // Use var for function-scoped variables where you need them throughout the entire function.
+        // Use let for block - scoped variables where you want to limit the variable’s scope to a specific block.
+        // Both var and let have their use cases, and understanding their differences helps in writing clear, maintainable code.
+
+        // ### Explicit let block
+
+        function exampleFunction() {
+            if (true) {
+                let a = 1;
+                let b = 2;
+
+                // `a` and `b` are accessible here
+                console.log(a); // 1
+                console.log(b); // 2
+            }
+
+            // `a` and `b` are NOT accessible here
+            // console.log(a); // ReferenceError
+            // console.log(b); // ReferenceError
+        }
+
+        //  Encapsulate variables that are only needed for a few lines of code within curly braces ({}). This limits their scope to just that block, reducing the risk of accidental usage elsewhere in the function.
+        // Use blocks with curly braces to limit the scope of variables to where they are actually needed.
+        // Clearty : Declaring variables within blocks makes the code easier to read and understand, as the scope is explicit.
+
+        // ### const
+
+        // Use it for immutable (not-changable) primitives or as a semantic placeholder, but be cautious about its limitations and the potential confusion it may create.
+
+        const arr = [1, 2, 3];
+        arr.push(4); //allow because mutation is not reassignment
+        // mutation : Mutation refers to changing the internal state or content of an existing object, array, or data structure without creating a new instance of it.
+        // arr = [5, 6]; // Error: Assignment to constant variable
+
+        // ### Hoisting
+
+        console.log(myVar); // Output: undefined (because declaration is hoisted, but initialization is not)
+        var myVar = 10;
+
+        console.log(myFunc()); // Output: "Hello, world!" (function declarations are fully hoisted (declairation and definition))
+        function myFunc() {
+            return "Hello, world!";
+        }
+
+        //  function expressions can not hoisted as well as variable declairation hoisted not assignment
+
+        // sayHi(); // Error: sayHi is not a function
+
+        var sayHi = function () {
+            console.log("Hi!");
+        };
+
+        var teacher1 = 'Kyle';
+        outer1();
+        function outer1() {
+            console.log(teacher1); //undefined
+            var teacher1 = "Suzy"
+        }
+        /*
+        behind the scene 
+        outer place on the top of code and teacher1 also hoisted in the function
+        function outer() {
+            var teacher1;          // Hoisted declaration, default value is `undefined`
+            console.log(teacher1); // Logs `undefined` because the variable is declared but not yet initialized
+            teacher1 = "Suzy";     // remains as it is in code
+        }
+        */
+
+        var teacher2 = 'Kyle';
+        function outer2() {
+            console.log(teacher2); //hoisted because we declair teacher2 under the console.log
+            var teacher2 = "Suzy"; //if I will remove declairati then logs will displayed Kyle as well as Lexical-Scope
+        }
+        outer2(); // undefined
+
+        //### Assign Value using hoisting
+
+        teacher3 = 'Kyle';
+        var teacher3;
+        console.log(outer3()); // Kyle
+        function outer3() {
+            return teacher3;
+        }
+
+        // ### let doesn't hoisted
+
+        console.log(teacher4); //ReferenceError: Cannot access 'teacher4' before initialization
+        let teacher4; 
+
+        // TDZ is a period where the let and const variables are in the block scope but cannot be accessed. This is to prevent accessing variables before their declaration so let and const not accessed before declairation
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Typing</title>
+</head>
+
+<body>
+    <script>
+        /*
+        In summary, while JavaScript itself is dynamically typed, TypeScript and similar tools add static typing capabilities, providing benefits like early error detection and improved code quality.
+
+        Typescript, Flow and Type aware linting
+
+        ### Benefits of TypeScript and Flow:
+
+            1)  Error Detection: They catch type-related mistakes that could otherwise lead to bugs.
+            2)  Type Communication: By adding type annotations, these tools make the types of variables and functions clearer in the code.
+            3)  IDE Integration: They offer excellent IDE integration with features like real-time type     checking, auto-completion, and more, which enhances the development experience.
+
+        ### Typescripts and flow Caveats (samasya)
+
+            1) Limit of estimation
+            2) Optional Annotations:
+            3) Potential for Uncertainty: (अनिश्चितता का संभावित जोखिम:)
+        */
+
+        // # Example
+
+        function add(a, b) {
+            return a + b;
+        }
+
+        let result = add(5, "10"); // This would work in JavaScript but lead to unexpected results (concatenation of 5 and "10" into "510")
+
+
+        function addNumber(a, b) {
+            if (typeof a !== 'number' || typeof b !== 'number') {
+                throw new Error('Both arguments must be numbers');
+            }
+            return a + b;
+        }
+
+        console.log(addNumber(5, "10")); // This will work as expected and throw an error if you try to pass a string instead of a number
+        // let result = add(5, "10"); // This line would cause a TypeScript error: Argument of type 'string' is not assignable to parameter of type 'number'
+
+        /*
+        Static typing is a feature that allows you to specify the type of a variable or function parameter at compile time, before the code is run. In a statically-typed language, these types are checked during compilation, and this can help catch errors early in the development process. JavaScript, by itself, is dynamically typed, meaning that types are determined at runtime and can change as the program executes.
+
+        However, there are tools and extensions to JavaScript that introduce static typing. The most notable example is TypeScript.
+        */
+
+        // Define a custom type for a Student
+        
+            // type Student = {
+            //     name: string; //define a type static
+            // };
+
+    </script>
+</body>
+
+</html>
